@@ -446,9 +446,14 @@ class Component extends DCLogic {
       contact: this.props.contact ?? '010-9131-6179',
       showPhone: S.vw >= 1280, navJustify: S.vw >= 1100 ? 'center' : 'flex-start',
       videos: [
-        { kicker: 'ORAON FILM', title: '오라온 홍보영상', src: 'video/oraon_promo.mp4' },
+        { kicker: 'ORAON FILM', title: '오라온 홍보영상', src: 'video/oraon_promo.mp4', gain: 2.8 },
         { kicker: 'HOT DETOX CF', title: '고주파기 핫톡 CF', src: 'video/hottalk_cf.mp4' },
-      ].map((v, i) => ({ ...v, poster: v.src + '#t=1.5', ref: (el) => { if (el && S.playing === i && el.paused && !el.dataset.started) { el.dataset.started = '1'; el.play().catch(() => {}); } }, playing: S.playing === i, idle: S.playing !== i, play: () => this.setState({ playing: i }) })),
+      ].map((v, i) => ({ ...v, poster: v.src + '#t=1.5', ref: (el) => { if (el && S.playing === i && !el.dataset.started) { el.dataset.started = '1';
+          if (v.gain && window.AudioContext) { try { const ac = this.ac || (this.ac = new AudioContext()); ac.resume();
+            const src = ac.createMediaElementSource(el), g = ac.createGain(), lim = ac.createDynamicsCompressor();
+            g.gain.value = v.gain; lim.threshold.value = -3; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.003; lim.release.value = 0.1;
+            src.connect(g).connect(lim).connect(ac.destination); } catch (e) {} }
+          el.play().catch(() => {}); } }, playing: S.playing === i, idle: S.playing !== i, play: () => this.setState({ playing: i }) })),
       menus, hdr, menuOpen: S.menuOpen, openMenu: set({ menuOpen: true }), closeMenu: set({ menuOpen: false }),
       slides, dots,
       pillars: [
