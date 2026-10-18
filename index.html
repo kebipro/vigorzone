@@ -8,6 +8,8 @@
 <body>
 <x-dc>
 <helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&amp;display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>html,body{margin:0;background:#ffffff;color:#161826;font-family:"Pretendard","Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#5d5294;text-decoration:none}a:hover{color:#423a6a}*{box-sizing:border-box}:root{--px:clamp(20px,4vw,40px);--py:clamp(72px,10vw,140px)}input,select,textarea,button{font-family:inherit}nav::-webkit-scrollbar{display:none}:focus-visible{outline:2px solid #796cbf;outline-offset:2px}</style>
 </helmet>
@@ -17,7 +19,10 @@
   <div style="max-width:1440px;margin:0 auto;padding:0 var(--px);height:{{ mob.hh }};display:flex;align-items:center;gap:28px;justify-content:space-between">
     <a href="#/" style="display:flex;flex-direction:column;line-height:1;color:{{ hdr.fg }};flex-shrink:0">
       <span style="font-size:clamp(15px,4vw,20px);font-weight:700;letter-spacing:.06em;color:#A200FF;white-space:nowrap">비고르 바른건강 플러스</span>
-      <span style="font-size:10px;letter-spacing:.36em;color:{{ hdr.sub }};margin-top:6px">VIGOR ZONE · ORAON</span>
+      <span style="display:flex;align-items:center;gap:10px;margin-top:6px">
+        <img src="{{ hdr.logo }}" alt="비고르 바른건강+" style="display:block;height:clamp(24px,4.8vw,32px);width:auto">
+        <span style="font-size:10px;letter-spacing:.36em;color:{{ hdr.sub }};white-space:nowrap">VIGOR ZONE · ORAON</span>
+      </span>
     </a>
     <sc-if value="{{ mob.desk }}" hint-placeholder-val="{{ true }}">
     <nav onMouseEnter="{{ openMenu }}" style="display:flex;gap:2px;flex:1;min-width:0;flex-wrap:nowrap;justify-content:{{ navJustify }};overflow-x:auto;scrollbar-width:none">
@@ -108,7 +113,7 @@
   <div style="max-width:1440px;margin:0 auto;padding:var(--py) var(--px) var(--py);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:clamp(24px,5vw,64px);align-items:end">
     <div style="display:flex;flex-direction:column;gap:22px">
       <div style="font-size:13px;letter-spacing:.34em;color:#A200FF;font-weight:600">OUR BELIEF</div>
-      <h2 style="margin:0;font-size:clamp(28px,4.4vw,64px);line-height:1.18;font-weight:700;letter-spacing:-.035em;text-wrap:balance">바른 온기가<br>바른 건강을 만듭니다</h2>
+      <h2 style="margin:0;font-size:clamp(28px,4.4vw,64px);line-height:1.18;font-weight:700;letter-spacing:-.035em;text-wrap:balance"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#A200FF;margin-bottom:.12em">Warmth that heals</span>바른 온기가<br><span style="background:linear-gradient(transparent 62%,#ecdcff 62%);padding:0 .06em">바른 건강</span>을 만듭니다</h2>
     </div>
     <p style="margin:0;font-size:clamp(16px,1.4vw,18px);line-height:1.8;color:#595d6c;max-width:520px">고주파 온열 케어기기와 힐링 공간 비고르존. 매일의 휴식을 건강한 습관으로 바꾸는 일을 합니다.</p>
   </div>
@@ -134,7 +139,7 @@
   <div style="position:relative;max-width:1440px;margin:0 auto;padding:var(--py) var(--px);display:flex;justify-content:flex-end">
     <div style="max-width:520px;display:flex;flex-direction:column;gap:22px">
       <div style="font-size:13px;letter-spacing:.34em;color:#ff8a6b;font-weight:600">HOT DETOX</div>
-      <h2 style="margin:0;font-size:clamp(28px,4.4vw,64px);line-height:1.15;font-weight:700;letter-spacing:-.035em">하루 30분,<br>내 몸을 따뜻하게</h2>
+      <h2 style="margin:0;font-size:clamp(28px,4.4vw,64px);line-height:1.15;font-weight:700;letter-spacing:-.035em"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#d9c2ff;margin-bottom:.12em">Thirty minutes a day</span>하루 30분,<br>내 몸을 <span style="color:#ff8a6b">따뜻하게</span></h2>
       <p style="margin:0;font-size:17px;line-height:1.8;color:#c9ccd9">고주파 발체온기 핫톡. 발끝에서 시작되는 깊은 온기로 하루의 피로를 풀어줍니다.</p>
       <div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">
         <a href="#/2/1" style="padding:16px 30px;border-radius:999px;background:#ffffff;color:#161826;font-size:15px;font-weight:600" style-hover="background:#ffe9e2;color:#161826">제품 자세히 보기 →</a>
@@ -162,27 +167,22 @@
     <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px">
       <div style="display:flex;flex-direction:column;gap:18px">
         <div style="font-size:13px;letter-spacing:.34em;color:#A200FF;font-weight:600">PRODUCTS</div>
-        <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em">제품구매</h2>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="4">
-          <button onClick="{{ tb.go }}" style="padding:11px 20px;border-radius:999px;border:1px solid {{ tb.bd }};background:{{ tb.bg }};color:{{ tb.fg }};font-size:14px;font-weight:600;cursor:pointer">{{ tb.label }}</button>
-        </sc-for>
+        <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em;line-height:1.2"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#A200FF;margin-bottom:.12em">Daily warmth,</span>매일의 온기를 <span style="background:linear-gradient(transparent 62%,#ecdcff 62%);padding:0 .06em">내 곁에</span></h2>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:{{ mob.prodCols }};gap:{{ mob.prodGap }}">
-      <sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="2">
         <a href="{{ p.href }}" style="display:flex;flex-direction:column;background:#ffffff;border-radius:20px;overflow:hidden;color:#161826;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-6px);box-shadow:0 24px 48px rgba(22,24,38,.12);color:#161826">
-          <div style="aspect-ratio:1/1;background:radial-gradient(circle at 50% 60%,#ffffff 0%,#eceaf6 100%);display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="aspect-ratio:4/3;background:radial-gradient(circle at 50% 60%,#ffffff 0%,#eceaf6 100%);display:flex;align-items:center;justify-content:center;position:relative">
             <img src="{{ p.img }}" alt="{{ p.name }}" style="width:78%;height:78%;object-fit:contain">
             <span style="position:absolute;left:clamp(10px,2vw,18px);top:clamp(10px,2vw,18px);padding:4px 10px;border-radius:999px;background:#161826;color:#ffffff;font-size:11px;font-weight:700;letter-spacing:.08em">{{ p.tag }}</span>
           </div>
           <div style="padding:clamp(14px,3vw,24px) clamp(14px,3vw,26px) clamp(16px,3vw,28px);display:flex;flex-direction:column;gap:6px">
             <div style="font-size:13px;color:#A200FF;font-weight:600">{{ p.cat }}</div>
-            <div style="font-size:clamp(15px,2.2vw,20px);font-weight:700;color:#A7310F;letter-spacing:-.02em;white-space:pre-line;line-height:1.35">{{ p.name }}</div>
+            <div style="font-size:clamp(15px,2.2vw,20px);font-weight:700;color:#A7310F;letter-spacing:-.02em;white-space:pre-line;line-height:1.35">{{ p.name }} <span style="color:#8a8d9b;font-weight:600;letter-spacing:.02em">{{ p.en }}</span></div>
             <div style="font-size:clamp(13px,1.6vw,14px);color:#595d6c;line-height:1.55">{{ p.desc }}</div>
             <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;font-size:clamp(12px,1.6vw,14px)">
-              <span style="color:#595d6c">구매 · 렌탈</span><span style="font-weight:700;color:#161826">가격 문의 →</span>
+              <span style="color:#595d6c">구매 · 렌탈</span><span style="font-weight:700;color:#161826">구매문의 →</span>
             </div>
           </div>
         </a>
@@ -195,7 +195,7 @@
   <div style="max-width:1440px;margin:0 auto;padding:var(--py) var(--px)">
     <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:48px">
       <div style="font-size:13px;letter-spacing:.34em;color:#d9c2ff;font-weight:600">CF FILM</div>
-      <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em">영상으로 만나는 비고르 바른건강 플러스</h2>
+      <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em;line-height:1.2"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#d9c2ff;margin-bottom:.12em">On screen</span>영상으로 먼저 <span style="color:#d9c2ff">느껴보세요</span></h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:24px">
       <sc-for list="{{ videos }}" as="v" hint-placeholder-count="2">
@@ -228,7 +228,7 @@
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,12,20,.86) 0%,rgba(11,12,20,.55) 42%,rgba(11,12,20,.05) 75%)"></div>
   <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:var(--py) var(--px);display:flex;flex-direction:column;gap:24px">
     <div style="font-size:13px;letter-spacing:.34em;color:#d9c2ff;font-weight:600">PREMIUM HEALING CAFE</div>
-    <h2 style="margin:0;font-size:clamp(30px,4.6vw,68px);line-height:1.15;font-weight:700;letter-spacing:-.035em">쉬어가는 공간,<br>힐링카페 비고르존</h2>
+    <h2 style="margin:0;font-size:clamp(30px,4.6vw,68px);line-height:1.15;font-weight:700;letter-spacing:-.035em"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#d9c2ff;margin-bottom:.12em">A pause for the body</span>쉬어가는 공간,<br><span style="color:#d9c2ff">힐링카페 비고르존</span></h2>
     <p style="margin:0;font-size:17px;line-height:1.8;color:#d5d7e3;max-width:460px">커피와 헬스케어 체험이 함께하는 프리미엄 힐링 공간. 지역의 건강 라운지로 함께 키워갈 가맹점을 찾습니다.</p>
     <div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">
       <a href="#/1/2" style="padding:16px 30px;border-radius:999px;background:#ffffff;color:#161826;font-size:15px;font-weight:600" style-hover="background:#efe6ff;color:#161826">가맹안내 →</a>
@@ -245,7 +245,7 @@
         <div style="position:absolute;right:0;bottom:0;height:{{ mob.dImgH }};width:{{ mob.dImgW }};background:{{ mob.dVeil }}"></div>
         <div style="position:relative;display:flex;flex-direction:column;gap:16px;max-width:300px">
           <div style="font-size:13px;letter-spacing:.34em;color:#A200FF;font-weight:600">DEALER</div>
-          <h3 style="margin:0;font-size:clamp(30px,2.8vw,40px);font-weight:700;line-height:1.22;letter-spacing:-.03em">고주파기 핫톡<br>대리점 창업</h3>
+          <h3 style="margin:0;font-size:clamp(30px,2.8vw,40px);font-weight:700;line-height:1.22;letter-spacing:-.03em"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#A200FF;margin-bottom:.12em">Your own business</span>고주파기 핫톡<br><span style="background:linear-gradient(transparent 62%,#ecdcff 62%);padding:0 .06em">대리점 창업</span></h3>
           <p style="margin:0;font-size:16px;line-height:1.7;color:#595d6c">제품 공급부터 교육, 체험 마케팅까지 본사가 함께합니다.</p>
         </div>
         <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap">
@@ -256,7 +256,7 @@
       <div style="position:relative;border-radius:24px;overflow:hidden;min-height:{{ mob.dealerH2 }};background:#3d3670;color:#ffffff;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,5vw,48px)">
         <div style="display:flex;flex-direction:column;gap:16px">
           <div style="font-size:13px;letter-spacing:.34em;color:#d9c2ff;font-weight:600">HOW TO START</div>
-          <h3 style="margin:0;font-size:clamp(30px,2.8vw,40px);font-weight:700;line-height:1.22;letter-spacing:-.03em">창업 · 가맹 절차</h3>
+          <h3 style="margin:0;font-size:clamp(30px,2.8vw,40px);font-weight:700;line-height:1.22;letter-spacing:-.03em"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#d9c2ff;margin-bottom:.12em">Four simple steps</span>시작은 가볍게,<br>네 단계면 충분합니다</h3>
         </div>
         <div style="display:flex;flex-direction:column">
           <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
@@ -271,17 +271,29 @@
   </div>
 </section>
 
-<section style="background:#f5f4fb;overflow:hidden">
-  <div style="max-width:1440px;margin:0 auto;padding:var(--py) var(--px) 0">
-    <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:48px">
-      <div style="font-size:13px;letter-spacing:.34em;color:#A200FF;font-weight:600">IN THE FIELD</div>
-      <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em">체험 현장</h2>
+<section style="background:#f5f4fb">
+  <div style="max-width:1440px;margin:0 auto;padding:var(--py) var(--px)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:48px">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="font-size:13px;letter-spacing:.34em;color:#A200FF;font-weight:600">VIGOR JOURNAL</div>
+        <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em;line-height:1.2"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#A200FF;margin-bottom:.12em">Vigor Journal</span>비고르가 <span style="background:linear-gradient(transparent 62%,#ecdcff 62%);padding:0 .06em">머문 자리</span></h2>
+      </div>
+      <p style="margin:0;font-size:16px;line-height:1.7;color:#595d6c;max-width:380px">경기장, 체험관, 지역 행사까지. 고주파기 핫톡을 직접 만난 현장입니다.</p>
     </div>
-  </div>
-  <div style="display:flex;gap:16px;overflow-x:auto;padding:0 var(--px) var(--py);scroll-snap-type:x mandatory;max-width:100vw">
-    <sc-for list="{{ field }}" as="fd" hint-placeholder-count="4">
-      <div style="flex:0 0 min(520px,82vw);aspect-ratio:4/3;border-radius:20px;overflow:hidden;scroll-snap-align:start;background:#e4e7f5"><img src="{{ fd }}" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    </sc-for>
+    <div style="display:grid;grid-template-columns:{{ mob.fieldCols }};grid-auto-rows:{{ mob.fieldRow }};gap:{{ mob.fieldGap }}">
+      <sc-for list="{{ field }}" as="fd" hint-placeholder-count="6">
+        <button onClick="{{ fd.open }}" aria-label="{{ fd.t }} 보기" style="position:relative;grid-column:{{ fd.col }};grid-row:{{ fd.row }};padding:0;border:0;border-radius:20px;overflow:hidden;cursor:pointer;background:#161826;text-align:left;color:#ffffff;font-family:inherit" style-hover="box-shadow:0 24px 60px rgba(22,24,38,.22)">
+          <img src="{{ fd.cover }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ fd.pos }};transition:transform 1s cubic-bezier(.2,.7,.2,1);transform:scale({{ fd.scale }})">
+          <span style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,12,20,.86) 0%,rgba(11,12,20,.25) 48%,rgba(11,12,20,0) 75%)"></span>
+          <span style="position:absolute;right:clamp(14px,2vw,22px);top:clamp(14px,2vw,22px);padding:6px 12px;border-radius:999px;background:rgba(11,12,20,.55);font-size:12px;font-weight:600;letter-spacing:.06em">{{ fd.count }}</span>
+          <span style="position:absolute;left:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,30px);bottom:clamp(18px,2.4vw,28px);display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:12px;letter-spacing:.24em;color:#d9c2ff;font-weight:600">{{ fd.en }}</span>
+            <span style="font-size:{{ fd.fs }};font-weight:700;letter-spacing:-.025em;line-height:1.25">{{ fd.t }}</span>
+            <span style="display:flex;align-items:center;gap:8px;font-size:14px;color:#e2e3ec">현장 보기 <span style="display:inline-flex;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.6);align-items:center;justify-content:center;font-size:13px">→</span></span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
   </div>
 </section>
 
@@ -289,7 +301,7 @@
   <div style="max-width:1440px;margin:0 auto;padding:var(--py) var(--px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:72px">
     <div style="display:flex;flex-direction:column;gap:18px">
       <div style="font-size:13px;letter-spacing:.34em;color:#A200FF;font-weight:600">CONTACT</div>
-      <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em">상담신청</h2>
+      <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em;line-height:1.2"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#A200FF;margin-bottom:.12em">Let's talk</span>당신의 시작을<br><span style="background:linear-gradient(transparent 62%,#ecdcff 62%);padding:0 .06em">함께 그립니다</span></h2>
       <p style="margin:0;font-size:17px;line-height:1.8;color:#595d6c;max-width:420px">남겨주신 연락처로 담당자가 빠르게 안내드립니다.</p>
       <div style="margin-top:24px;font-size:14px;color:#595d6c">전화 상담</div>
       <div style="font-size:clamp(32px,3vw,44px);font-weight:700;color:#161826;letter-spacing:-.01em">{{ contact }}</div>
@@ -339,7 +351,7 @@
   <div style="max-width:1440px;margin:0 auto;padding:64px var(--px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
     <div style="display:flex;flex-direction:column;gap:10px">
       <div style="font-size:13px;letter-spacing:.34em;color:#d9c2ff;font-weight:600">ARCHIVE</div>
-      <div style="font-size:26px;font-weight:700">자료실</div>
+      <div style="font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.25"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#d9c2ff;margin-bottom:.12em">Resources</span>필요한 자료를 한곳에</div>
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <sc-for list="{{ archive }}" as="ar" hint-placeholder-count="3">
@@ -381,6 +393,36 @@
 </section>
 </sc-if>
 
+<sc-if value="{{ lb.on }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" style="position:fixed;inset:0;z-index:60;background:rgba(11,12,20,.94);color:#ffffff;display:flex;flex-direction:column">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:clamp(16px,2.4vw,28px) var(--px)">
+      <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+        <span style="font-size:12px;letter-spacing:.24em;color:#d9c2ff;font-weight:600">{{ lb.en }}</span>
+        <span style="font-size:clamp(18px,2vw,26px);font-weight:700;letter-spacing:-.02em">{{ lb.t }}</span>
+      </div>
+      <button onClick="{{ lb.close }}" aria-label="닫기" style="flex-shrink:0;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:transparent;color:#ffffff;font-size:22px;cursor:pointer" style-hover="background:rgba(255,255,255,.12)">✕</button>
+    </div>
+    <div style="position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 var(--px)">
+      <img src="{{ lb.img }}" alt="{{ lb.t }}" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:12px">
+      <sc-if value="{{ lb.multi }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ lb.prev }}" aria-label="이전" style="position:absolute;left:clamp(8px,2vw,32px);top:50%;margin-top:-26px;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#161826;font-size:20px;cursor:pointer">←</button>
+        <button onClick="{{ lb.next }}" aria-label="다음" style="position:absolute;right:clamp(8px,2vw,32px);top:50%;margin-top:-26px;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#161826;font-size:20px;cursor:pointer">→</button>
+      </sc-if>
+    </div>
+    <div style="padding:clamp(16px,2.4vw,28px) var(--px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+      <p style="margin:0;font-size:15px;line-height:1.7;color:#d5d7e3;max-width:640px">{{ lb.d }}</p>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="display:flex;gap:8px">
+          <sc-for list="{{ lb.thumbs }}" as="th" hint-placeholder-count="3">
+            <button onClick="{{ th.go }}" aria-label="사진 {{ th.n }}" style="width:64px;height:48px;padding:0;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid {{ th.bd }};background:#161826;opacity:{{ th.op }}"><img src="{{ th.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button>
+          </sc-for>
+        </div>
+        <span style="font-size:13px;color:#9a9eb0;font-variant-numeric:tabular-nums;white-space:nowrap">{{ lb.label }}</span>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
 <footer style="background:#0b0c14;color:#9a9eb0;font-size:13px;line-height:1.8">
   <div style="max-width:1440px;margin:0 auto;padding:72px var(--px) 48px;display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap">
     <div>
@@ -406,7 +448,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;contact&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;010-9131-6179&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { menuOpen: false, slide: 0, fillOn: false, tab: 0, type: 0, sent: false, faq: -1, route: null, scrolled: false, playing: -1, drawer: false, mSec: -1, vw: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+  state = { menuOpen: false, slide: 0, fillOn: false, tab: 0, type: 0, sent: false, faq: -1, route: null, scrolled: false, playing: -1, lbS: -1, lbI: 0, drawer: false, mSec: -1, vw: typeof window !== 'undefined' ? window.innerWidth : 1440 };
   parseHash() { const m = (location.hash || '').match(/^#\/(\d+)\/(\d+)/); return m ? { m: +m[1], s: +m[2] } : null; }
   goSlide(i) { this.setState({ slide: i, fillOn: false }); clearTimeout(this.ft); this.ft = setTimeout(() => this.setState({ fillOn: true }), 60); }
   componentDidMount() {
@@ -417,10 +459,12 @@ class Component extends DCLogic {
     window.addEventListener('scroll', this.onScroll, { passive: true });
     this.onResize = () => this.setState({ vw: window.innerWidth });
     window.addEventListener('resize', this.onResize);
+    window.addEventListener('keydown', this.onKey);
     this.goSlide(0);
     this.timer = setInterval(() => { if (this.props.heroAutoplay !== false) this.goSlide((this.state.slide + 1) % 3); }, 6000);
   }
-  componentWillUnmount() { clearInterval(this.timer); clearTimeout(this.ft); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); }
+  onKey = (e) => { const S = this.state; if (S.lbS < 0) return; if (e.key === 'Escape') this.setState({ lbS: -1 }); const n = this.lbN || 1; if (e.key === 'ArrowRight') this.setState({ lbI: (S.lbI + 1) % n }); if (e.key === 'ArrowLeft') this.setState({ lbI: (S.lbI - 1 + n) % n }); };
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); clearInterval(this.timer); clearTimeout(this.ft); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); }
   renderVals() {
     const S = this.state, set = (o) => () => this.setState(o);
     const menuRaw = [
@@ -443,11 +487,32 @@ class Component extends DCLogic {
         prevHref: prev.href, prevLabel: prev.label, nextHref: next.href, nextLabel: next.label };
     }
     const isMob = S.vw < 860;
+    const P = 'assets/hd/k20';
+    const stories = [
+      { en: 'PRO BASKETBALL', t: '프로농구 경기장 하프타임 이벤트', d: '프로농구 경기 하프타임에 비고르 바른건강 고주파 발체온기를 관중 경품으로 전달했습니다.', imgs: [P+'230324_143313570.jpg', P+'230324_143313453.jpg', P+'230324_143313801.jpg'], pos: '50% 40%' },
+      { en: 'EXPERIENCE CENTER', t: '체험관 무료 체험', d: '하루 30분 무료 체험. 동네 어르신들이 매일 찾는 체험관 현장입니다.', imgs: [P+'240511_110524194_01.jpg', P+'240511_110524194_03.jpg', P+'240511_110524194.jpg'], pos: '55% 50%' },
+      { en: 'GRAND OPEN', t: '체험관 오픈', d: '지역 상권에 새로 문을 연 체험관.', imgs: [P+'240511_110524194_02.jpg', P+'240511_110524194_05.jpg'], pos: '50% 50%' },
+      { en: 'ATHLETES PICK', t: '선수들의 PICK', d: '배구·농구 선수들이 직접 체험한 고주파 발체온기.', imgs: [P+'230324_143510556.jpg', P+'230324_143510697.jpg', P+'230324_143443925.jpg'], pos: '50% 50%' },
+      { en: 'COMMUNITY', t: '지역 체험 행사', d: '지역 주민과 함께한 고주파 온열 체험 행사.', imgs: [P+'230324_143313002.jpg', P+'230324_143335752.jpg', P+'230324_143313699.jpg'], pos: '50% 50%' },
+      { en: 'DONATION', t: '기부금 전달식', d: '지역사회와 함께하는 나눔.', imgs: [P+'230324_143358840.jpg'], pos: '50% 50%' },
+    ];
+    const layout = isMob
+      ? [['1 / span 2','span 2'],['1 / span 2','span 2'],['auto','span 1'],['auto','span 1'],['auto','span 1'],['auto','span 1']]
+      : [['1 / span 2','1 / span 2'],['3 / span 2','1 / span 1'],['3 / span 1','2 / span 1'],['4 / span 1','2 / span 1'],['1 / span 2','3 / span 1'],['3 / span 2','3 / span 1']];
+    const field = stories.map((s, i) => ({ ...s, cover: s.imgs[0], count: s.imgs.length > 1 ? '+' + s.imgs.length + ' 사진' : '사진 1', col: layout[i][0], row: layout[i][1],
+      fs: (isMob ? i < 2 : i === 0) ? 'clamp(22px,2.4vw,34px)' : 'clamp(16px,1.5vw,21px)', scale: 1,
+      open: () => this.setState({ lbS: i, lbI: 0 }) }));
+    const cur = stories[S.lbS], nI = cur ? cur.imgs.length : 0; this.lbN = nI;
+    if (typeof document !== 'undefined') document.body.style.overflow = cur ? 'hidden' : '';
+    const lb = cur ? { on: true, en: cur.en, t: cur.t, d: cur.d, img: cur.imgs[S.lbI], multi: nI > 1, label: (S.lbI + 1) + ' / ' + nI,
+      close: () => this.setState({ lbS: -1 }),
+      prev: () => this.setState({ lbI: (S.lbI - 1 + nI) % nI }), next: () => this.setState({ lbI: (S.lbI + 1) % nI }),
+      thumbs: cur.imgs.map((src, k) => ({ src, n: k + 1, bd: k === S.lbI ? '#ffffff' : 'transparent', op: k === S.lbI ? 1 : 0.55, go: () => this.setState({ lbI: k }) })) } : { on: false, thumbs: [] };
     const drawerOpen = isMob && S.drawer;
     const solid = S.scrolled || S.menuOpen || drawerOpen;
     const hdr = solid
-      ? { bg: 'rgba(255,255,255,.97)', line: '#ececf3', fg: '#161826', sub: '#796cbf' }
-      : { bg: 'rgba(11,12,20,0)', line: 'rgba(255,255,255,.12)', fg: '#ffffff', sub: '#d9c2ff' };
+      ? { bg: 'rgba(255,255,255,.97)', line: '#ececf3', fg: '#161826', sub: '#796cbf', logo: 'assets/vigor_logo_cut.png' }
+      : { bg: 'rgba(11,12,20,0)', line: 'rgba(255,255,255,.12)', fg: '#ffffff', sub: '#d9c2ff', logo: 'assets/vigor_logo_white.png' };
     const raw = [
       { label: '핫톡', kicker: 'HOT DETOX', title: '발끝까지 따뜻하게...\n고주파 발체온기 핫톡', body: '고주파 발체온기로 매일의 온기를 채우세요.', cta: '제품 보기', href: '#/2/1', img: 'assets/hd/1.jpg', pos: '70% 50%' },
       { label: '비고르존', kicker: 'PREMIUM HEALING CAFE', title: '힐링카페\n비고르존', body: '커피 한 잔과 함께하는 프리미엄 헬스케어 체험 공간.', cta: '가맹안내', href: '#/1/2', img: 'assets/zone11.png', pos: '60% 50%' },
@@ -455,15 +520,10 @@ class Component extends DCLogic {
     ];
     const slides = raw.map((s, i) => { const on = i === S.slide; return { ...s, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', scale: on ? 1 : 1.08, ty: on ? '0px' : '24px' }; });
     const dots = raw.map((s, i) => { const on = i === S.slide; return { n: `0${i + 1}`, label: s.label, go: () => this.goSlide(i), fg: on ? '#ffffff' : 'rgba(255,255,255,.55)', fill: on && S.fillOn ? '100%' : '0%', tr: on && S.fillOn ? 'width 6s linear' : 'none' }; });
-    const all = [
-      { cat: '고주파기', name: '고주파기 핫톡', tag: 'BEST', desc: '고주파 온열로 깊은 따뜻함을 전하는 케어기기', img: 'assets/top1007_cut.png', href: '#/2/0' },
-      { cat: '헬스케어 체어', name: '비고르 바른건강+', tag: 'NEW', desc: '바른 자세와 휴식을 위한 프리미엄 체어', img: 'assets/top1002_cut.png', href: '#/2/2' },
-      { cat: '발체온기', name: '비고르 발체온기 핫톡', tag: 'BEST', desc: '발끝부터 따뜻하게, 매일의 온열 케어', img: 'assets/200_cut.png', href: '#/2/1' },
-      { cat: '헬스케어 체어', name: '오라온 웨이브 체어 ORAON WAVE CHAIR', tag: '체험가능', desc: '비고르존 매장에서 직접 체험해 보세요', img: 'assets/top1010_cut.png', href: '#/2/2' },
+    const products = [
+      { cat: '고주파기', name: '고주파기 발체온기 핫톡', en: 'HOT-DETOX ARK-121P', tag: 'BEST', desc: '고주파 온열로 발끝부터 따뜻하게, 매일의 온열 케어', img: 'assets/200_cut.png', href: '#/2/0' },
+      { cat: '헬스케어 체어', name: '오라온 웨이브 체어', en: 'ORAON WAVE CHAIR', tag: '체험가능', desc: '바른 자세와 깊은 휴식을 위한 프리미엄 체어', img: 'assets/wave_chair_nukki.png', href: '#/2/2' },
     ];
-    const tabNames = ['전체', '고주파기', '헬스케어 체어', '발체온기'];
-    const tabs = tabNames.map((label, i) => ({ label, go: set({ tab: i }), bd: i === S.tab ? '#161826' : '#d6d6e4', bg: i === S.tab ? '#161826' : '#ffffff', fg: i === S.tab ? '#ffffff' : '#292b31' }));
-    const products = S.tab === 0 ? all : all.filter(p => p.cat === tabNames[S.tab]);
     const typeNames = ['대리점 창업', '비고르존 가맹', '제품 구매', '체험 예약'];
     const types = typeNames.map((label, i) => ({ label, go: set({ type: i }), bd: i === S.type ? '#A200FF' : '#dcdcea', bg: i === S.type ? '#A200FF' : '#ffffff', fg: i === S.type ? '#ffffff' : '#292b31' }));
     const faqRaw = [
@@ -492,10 +552,11 @@ class Component extends DCLogic {
         b1: drawerOpen ? 'translateY(7px) rotate(45deg)' : 'none', b2: drawerOpen ? 0 : 1, b3: drawerOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
         pillarAr: isMob ? '4/5' : '3/4',
         hotVeil: isMob ? 'linear-gradient(0deg,rgba(11,12,20,.95) 0%,rgba(11,12,20,.8) 55%,rgba(11,12,20,.35) 100%)' : 'linear-gradient(270deg,rgba(11,12,20,.95) 0%,rgba(11,12,20,.75) 40%,rgba(11,12,20,0) 75%)',
-        prodCols: isMob ? 'repeat(2,minmax(0,1fr))' : 'repeat(auto-fill,minmax(280px,1fr))', prodGap: isMob ? '12px' : '20px',
+        prodCols: isMob ? 'repeat(2,minmax(0,1fr))' : 'repeat(2,minmax(0,1fr))', prodGap: isMob ? '12px' : '20px',
         play: isMob ? '64px' : '88px', playM: isMob ? '-32px 0 0 -32px' : '-44px 0 0 -44px',
         dealerH: isMob ? '620px' : '560px', dealerH2: isMob ? '0px' : '560px',
         dImgH: isMob ? '52%' : '100%', dImgW: isMob ? '100%' : '56%',
+        fieldCols: isMob ? 'repeat(2,minmax(0,1fr))' : 'repeat(4,minmax(0,1fr))', fieldRow: isMob ? '150px' : 'clamp(200px,18vw,280px)', fieldGap: isMob ? '10px' : '16px',
         dVeil: isMob ? 'linear-gradient(180deg,#eeebf8 0%,rgba(238,235,248,0) 35%)' : 'linear-gradient(90deg,#f0eef9 0%,rgba(240,238,249,0) 40%)',
       },
       menus, hdr, menuOpen: S.menuOpen, openMenu: set({ menuOpen: true }), closeMenu: set({ menuOpen: false }),
@@ -511,8 +572,8 @@ class Component extends DCLogic {
         { n: '03', t: '하루 30분 온열 케어', img: 'assets/hd/5.jpg', pos: '40% 50%' },
         { n: '04', t: '고주파 HOT DETOX', img: 'assets/hd/2.jpg', pos: '30% 50%' },
       ],
-      field: ['assets/hd/k20240511_110524194.jpg', 'assets/hd/k20230324_143335752.jpg', 'assets/hd/k20230324_143313002.jpg', 'assets/hd/k20230324_143510556.jpg', 'assets/hd/k20240511_110524194_02.jpg'],
-      tabs, products, types, faqs,
+      field, lb,
+      products, types, faqs,
       steps: [
         { n: '01', t: '상담 신청', d: '온라인 또는 전화로 상담을 신청합니다.' },
         { n: '02', t: '방문 미팅', d: '상권과 운영 방향을 함께 검토합니다.' },
