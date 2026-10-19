@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="manifest" href="manifest.webmanifest">
+<script>window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();window.__bip=e;});</script>
 <meta name="theme-color" content="#A200FF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -636,6 +637,7 @@ class Component extends DCLogic {
     this.setState({ pwaIos: ios, pwaStandalone: standalone, pwaDismissed: dismissed, pwaMob: /android|iphone|ipad|ipod|mobile/i.test(ua) || ios, pwaSafari: /safari/i.test(ua) && !/chrome|crios|edg|fxios|samsung/i.test(ua), pwaSamsung: /samsungbrowser/i.test(ua) });
     this.onBip = (e) => { e.preventDefault(); this.bip = e; this.setState({ pwaCan: true }); };
     this.onInstalled = () => { this.bip = null; this.setState({ pwaCan: false, pwaStandalone: true, pwaGuide: false }); };
+    if (window.__bip) { this.bip = window.__bip; this.setState({ pwaCan: true }); }
     window.addEventListener('beforeinstallprompt', this.onBip);
     window.addEventListener('appinstalled', this.onInstalled);
     if ('serviceWorker' in navigator && location.protocol === 'https:' && /(^|\.)vigorzone\.kr$|netlify\.app$/.test(location.hostname)) navigator.serviceWorker.register('sw.js').catch(() => {});
@@ -762,7 +764,7 @@ class Component extends DCLogic {
         return {
           pill: !S.pwaStandalone && !S.pwaDismissed && S.lbS < 0 && !(isMob && S.drawer) && S.scrolled,
           footer: !S.pwaStandalone, guide: !!S.pwaGuide, device, steps,
-          install: () => { if (this.bip) { const p = this.bip; this.bip = null; p.prompt(); p.userChoice.then(() => this.setState({ pwaCan: false })).catch(() => {}); } else this.setState({ pwaGuide: true }); },
+          install: () => { if (!this.bip && window.__bip) this.bip = window.__bip; if (this.bip) { window.__bip = null; const p = this.bip; this.bip = null; p.prompt(); p.userChoice.then(() => this.setState({ pwaCan: false })).catch(() => {}); } else this.setState({ pwaGuide: true }); },
           dismiss: () => { try { localStorage.setItem('vigor_a2hs_dismissed', '1'); } catch (e) {} this.setState({ pwaDismissed: true }); },
           close: () => this.setState({ pwaGuide: false }), stop: (e) => e.stopPropagation(),
         };
