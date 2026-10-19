@@ -3,11 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#A200FF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="비고르">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#A200FF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="비고르">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&amp;display=swap">
@@ -498,6 +512,35 @@
   </div>
 </sc-if>
 
+<sc-if value="{{ pwa.pill }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);z-index:55;padding:1px;border-radius:999px;background:linear-gradient(115deg,#ff2e93 0%,#A200FF 50%,#3fb8ff 100%);box-shadow:0 6px 18px rgba(162,0,255,.22)">
+    <div style="display:flex;align-items:center;gap:1px;padding:2px 3px 2px 2px;border-radius:999px;background:linear-gradient(135deg,#ffffff 0%,#f6efff 100%)">
+      <button onClick="{{ pwa.install }}" style="display:flex;align-items:center;gap:5px;padding:0 5px 0 0;border:0;background:transparent;cursor:pointer;color:#161826;font-family:inherit" style-hover="opacity:.8">
+        <span style="flex-shrink:0;width:26px;height:26px;border-radius:50%;padding:1px;background:linear-gradient(135deg,#ff2e93,#A200FF,#3fb8ff)"><img src="icons/icon-192.png" alt="" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#ffffff"></span>
+        <span style="font-family:'Noto Serif KR',serif;font-size:10px;font-weight:700;white-space:nowrap;color:#5a1f9e">홈 화면에 추가</span>
+      </button>
+      <button onClick="{{ pwa.dismiss }}" aria-label="닫기" style="width:16px;height:16px;flex-shrink:0;padding:0;border:0;border-radius:50%;background:#ece6fb;color:#796cbf;cursor:pointer;font-size:8px;line-height:1" style-hover="background:#d9c2ff;color:#5a1f9e">✕</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ pwa.guide }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ pwa.close }}" style="position:fixed;inset:0;z-index:65;background:rgba(11,12,20,.55);display:flex;align-items:flex-end;justify-content:center;padding:16px">
+    <div role="dialog" aria-modal="true" onClick="{{ pwa.stop }}" style="width:100%;max-width:440px;background:#ffffff;border-radius:24px;padding:clamp(22px,4vw,32px);display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 80px rgba(11,12,20,.35);margin-bottom:max(0px,calc(50vh - 260px))">
+      <div style="display:flex;align-items:center;gap:14px">
+        <img src="icons/icon-192.png" alt="" style="width:52px;height:52px;border-radius:14px;border:1px solid #ece6fb">
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:19px;font-weight:700;letter-spacing:-.02em">홈 화면에 추가하기</span><span style="font-size:13px;color:#595d6c">{{ pwa.device }}</span></div>
+      </div>
+      <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ pwa.steps }}" as="st" hint-placeholder-count="3">
+          <li style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:#f5f4fb;font-size:15px;line-height:1.55;color:#161826"><span style="flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#A200FF;color:#ffffff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px">{{ st.n }}</span><span>{{ st.t }}</span></li>
+        </sc-for>
+      </ol>
+      <button onClick="{{ pwa.close }}" style="padding:14px;border-radius:999px;border:0;background:#161826;color:#ffffff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit" style-hover="background:#A200FF">확인</button>
+    </div>
+  </div>
+</sc-if>
+
 <button onClick="{{ toTop }}" aria-label="맨 위로 가기" style="position:fixed;right:clamp(16px,2.4vw,32px);bottom:clamp(16px,2.4vw,32px);z-index:55;width:clamp(48px,5vw,56px);height:clamp(48px,5vw,56px);border-radius:50%;border:0;background:#A200FF;color:#ffffff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;box-shadow:0 10px 28px rgba(162,0,255,.35);opacity:{{ topBtn.op }};transform:translateY({{ topBtn.ty }});pointer-events:{{ topBtn.pe }};transition:opacity .35s ease,transform .35s ease,background .2s" style-hover="background:#161826">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
   <span style="font-size:9px;font-weight:700;letter-spacing:.08em;line-height:1">TOP</span>
@@ -521,7 +564,7 @@
     </div>
   </div>
   <div style="max-width:1440px;margin:0 auto;padding:0 var(--px) 40px;display:flex;justify-content:flex-end">
-    <div style="display:flex;gap:18px"><a href="#" style="color:#cfd3e5">이용약관</a><a href="#" style="color:#f3f5fe;font-weight:600">개인정보처리방침</a></div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center"><sc-if value="{{ pwa.footer }}" hint-placeholder-val="{{ true }}"><button onClick="{{ pwa.install }}" style="padding:0;border:0;background:transparent;color:#d9c2ff;font-size:inherit;font-family:inherit;font-weight:600;cursor:pointer" style-hover="color:#ffffff">＋ 홈 화면에 추가</button></sc-if><a href="#" style="color:#cfd3e5">이용약관</a><a href="#" style="color:#f3f5fe;font-weight:600">개인정보처리방침</a></div>
   </div>
 </footer>
 </div>
@@ -587,6 +630,15 @@ class Component extends DCLogic {
   killMotion() { if (this.io) this.io.disconnect(); if (this.mo) this.mo.disconnect(); clearTimeout(this.mt); if (this.raf) cancelAnimationFrame(this.raf); if (this.onMotion) { window.removeEventListener('scroll', this.onMotion); window.removeEventListener('resize', this.onMotion); } this.io = null; }
   componentDidMount() {
     setTimeout(() => this.initMotion(), 120);
+    const ua = navigator.userAgent || '', ios = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+    let dismissed = false; try { dismissed = localStorage.getItem('vigor_a2hs_dismissed') === '1'; } catch (e) {}
+    this.setState({ pwaIos: ios, pwaStandalone: standalone, pwaDismissed: dismissed, pwaMob: /android|iphone|ipad|ipod|mobile/i.test(ua) || ios, pwaSafari: /safari/i.test(ua) && !/chrome|crios|edg|fxios|samsung/i.test(ua), pwaSamsung: /samsungbrowser/i.test(ua) });
+    this.onBip = (e) => { e.preventDefault(); this.bip = e; this.setState({ pwaCan: true }); };
+    this.onInstalled = () => { this.bip = null; this.setState({ pwaCan: false, pwaStandalone: true, pwaGuide: false }); };
+    window.addEventListener('beforeinstallprompt', this.onBip);
+    window.addEventListener('appinstalled', this.onInstalled);
+    if ('serviceWorker' in navigator && location.protocol === 'https:' && /(^|\.)vigorzone\.kr$|netlify\.app$/.test(location.hostname)) navigator.serviceWorker.register('sw.js').catch(() => {});
     this.onHash = () => { this.setState({ route: this.parseHash(), menuOpen: false, drawer: false }); window.scrollTo(0, 0); };
     this.onScroll = () => { const s = window.scrollY > 40, t = window.scrollY > 600; if (s !== this.state.scrolled || t !== this.state.showTop) this.setState({ scrolled: s, showTop: t }); };
     this.setState({ route: this.parseHash() });
@@ -599,7 +651,7 @@ class Component extends DCLogic {
     this.timer = setInterval(() => { if (this.props.heroAutoplay !== false) this.goSlide((this.state.slide + 1) % 3); }, 6000);
   }
   onKey = (e) => { const S = this.state; if (S.lbS < 0) return; if (e.key === 'Escape') this.setState({ lbS: -1 }); const n = this.lbN || 1; if (e.key === 'ArrowRight') this.setState({ lbI: (S.lbI + 1) % n }); if (e.key === 'ArrowLeft') this.setState({ lbI: (S.lbI - 1 + n) % n }); };
-  componentWillUnmount() { this.killMotion(); window.removeEventListener('keydown', this.onKey); clearInterval(this.timer); clearTimeout(this.ft); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); }
+  componentWillUnmount() { window.removeEventListener('beforeinstallprompt', this.onBip); window.removeEventListener('appinstalled', this.onInstalled); this.killMotion(); window.removeEventListener('keydown', this.onKey); clearInterval(this.timer); clearTimeout(this.ft); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); }
   renderVals() {
     const S = this.state, set = (o) => () => this.setState(o);
     const menuRaw = [
@@ -699,6 +751,22 @@ class Component extends DCLogic {
         dVeil: isMob ? 'linear-gradient(180deg,#eeebf8 0%,rgba(238,235,248,0) 35%)' : 'linear-gradient(90deg,#f0eef9 0%,rgba(240,238,249,0) 40%)',
       },
       goHome: (e) => { e.preventDefault(); window.location.href = window.location.pathname + window.location.search; },
+      pwa: (() => {
+        const st = (arr) => arr.map((t, i) => ({ n: i + 1, t }));
+        let device = '', steps = [];
+        if (S.pwaIos) { device = 'iPhone · iPad (Safari)'; steps = st(['화면 아래(아이패드는 위) 공유 버튼 □↑ 을 누르세요.', '목록을 내려 \'홈 화면에 추가\'를 누르세요.', '오른쪽 위 \'추가\'를 누르면 홈 화면에 비고르 아이콘이 생겨요.']); }
+        else if (S.pwaMob && S.pwaSamsung) { device = '삼성 인터넷'; steps = st(['아래쪽 메뉴 ≡ 버튼을 누르세요.', '\'현재 페이지 추가\' → \'홈 화면\'을 누르세요.', '\'추가\'를 누르면 홈 화면에 아이콘이 생겨요.']); }
+        else if (S.pwaMob) { device = 'Android (Chrome)'; steps = st(['오른쪽 위 ⋮ 메뉴를 누르세요.', '\'홈 화면에 추가\' 또는 \'앱 설치\'를 누르세요.', '\'설치\'를 누르면 홈 화면에 아이콘이 생겨요.']); }
+        else if (S.pwaSafari) { device = 'Mac (Safari)'; steps = st(['상단 메뉴에서 \'파일\'을 누르세요.', '\'Dock에 추가\'를 누르세요.', '\'추가\'를 누르면 Dock과 Launchpad에 아이콘이 생겨요.']); }
+        else { device = 'PC (Chrome · Edge · 웨일)'; steps = st(['주소창 오른쪽 끝의 설치 아이콘 ⊕ 을 누르세요.', '안 보이면 오른쪽 위 ⋮ 메뉴 → \'저장 및 공유\' → \'페이지를 앱으로 설치\'(Edge는 \'앱\' → \'이 사이트를 앱으로 설치\')를 누르세요.', '\'설치\'를 누르면 바탕화면과 시작 메뉴에 아이콘이 생겨요.']); }
+        return {
+          pill: !S.pwaStandalone && !S.pwaDismissed && S.lbS < 0 && !(isMob && S.drawer) && S.scrolled,
+          footer: !S.pwaStandalone, guide: !!S.pwaGuide, device, steps,
+          install: () => { if (this.bip) { const p = this.bip; this.bip = null; p.prompt(); p.userChoice.then(() => this.setState({ pwaCan: false })).catch(() => {}); } else this.setState({ pwaGuide: true }); },
+          dismiss: () => { try { localStorage.setItem('vigor_a2hs_dismissed', '1'); } catch (e) {} this.setState({ pwaDismissed: true }); },
+          close: () => this.setState({ pwaGuide: false }), stop: (e) => e.stopPropagation(),
+        };
+      })(),
       progRef: this.progRef,
       toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
       topBtn: S.showTop && S.lbS < 0 && !(isMob && S.drawer) ? { op: 1, ty: '0px', pe: 'auto' } : { op: 0, ty: '16px', pe: 'none' },
