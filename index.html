@@ -209,7 +209,7 @@
       <sc-for list="{{ products }}" as="p" hint-placeholder-count="2">
         <a href="{{ p.href }}" style="display:flex;flex-direction:column;height:100%;background:#ffffff;border-radius:20px;overflow:hidden;color:#161826;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-6px);box-shadow:0 24px 48px rgba(22,24,38,.12);color:#161826">
           <div style="aspect-ratio:4/3;flex-shrink:0;overflow:hidden;background:radial-gradient(circle at 50% 60%,#ffffff 0%,#eceaf6 100%);display:flex;align-items:center;justify-content:center;position:relative">
-            <img src="{{ p.img }}" alt="{{ p.name }}" style="position:absolute;left:11%;top:11%;width:78%;height:78%;object-fit:contain">
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position:absolute;left:11%;top:11%;width:78%;height:78%;object-fit:contain;scale:{{ p.scale }}">
           </div>
           <div style="padding:clamp(14px,3vw,24px) clamp(14px,3vw,26px) clamp(16px,3vw,28px);display:flex;flex-direction:column;gap:6px;flex:1">
             <div style="font-size:13px;color:#A200FF;font-weight:600">{{ p.cat }}</div>
@@ -634,7 +634,7 @@ class Component extends DCLogic {
     const ua = navigator.userAgent || '', ios = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
     let dismissed = false; try { dismissed = localStorage.getItem('vigor_a2hs_dismissed') === '1'; } catch (e) {}
-    this.setState({ pwaIos: ios, pwaStandalone: standalone, pwaDismissed: dismissed, pwaMob: /android|iphone|ipad|ipod|mobile/i.test(ua) || ios, pwaSafari: /safari/i.test(ua) && !/chrome|crios|edg|fxios|samsung/i.test(ua), pwaSamsung: /samsungbrowser/i.test(ua) });
+    this.setState({ pwaIos: ios, pwaStandalone: standalone, pwaDismissed: dismissed, pwaMob: /android|iphone|ipad|ipod|mobile/i.test(ua) || ios, pwaSafari: /safari/i.test(ua) && !/chrome|crios|edg|fxios|samsung/i.test(ua), pwaSamsung: /samsungbrowser/i.test(ua), pwaWhale: /whale/i.test(ua) });
     this.onBip = (e) => { e.preventDefault(); this.bip = e; this.setState({ pwaCan: true }); };
     this.onInstalled = () => { this.bip = null; this.setState({ pwaCan: false, pwaStandalone: true, pwaGuide: false }); };
     if (window.__bip) { this.bip = window.__bip; this.setState({ pwaCan: true }); }
@@ -714,8 +714,8 @@ class Component extends DCLogic {
     const slides = raw.map((s, i) => { const on = i === S.slide; return { ...s, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', scale: on ? 1 : 1.08, ty: on ? '0px' : '24px' }; });
     const dots = raw.map((s, i) => { const on = i === S.slide; return { n: `0${i + 1}`, label: s.label, go: () => this.goSlide(i), fg: on ? '#ffffff' : 'rgba(255,255,255,.55)', fill: on && S.fillOn ? '100%' : '0%', tr: on && S.fillOn ? 'width 6s linear' : 'none' }; });
     const products = [
-      { cat: '고주파기', name: '고주파기 발체온기 핫톡', en: 'HOT-DETOX ARK-121P', tag: 'BEST', desc: '고주파 온열로 발끝부터 따뜻하게, 매일의 온열 케어', img: 'assets/200_cut.png', href: '#/2/0' },
-      { cat: '헬스케어 체어', name: '오라온 웨이브 체어', en: 'ORAON WAVE CHAIR', tag: '체험가능', desc: '바른 자세와 깊은 휴식을 위한 프리미엄 체어', img: 'assets/wave_chair_nukki.png', href: '#/2/1' },
+      { cat: '고주파기', name: '고주파기 발체온기 핫톡', en: 'HOT-DETOX ARK-121P', tag: 'BEST', desc: '고주파 온열로 발끝부터 따뜻하게, 매일의 온열 케어', img: 'assets/200_cut.png', scale: 1.5, href: '#/2/0' },
+      { cat: '헬스케어 체어', name: '오라온 웨이브 체어', en: 'ORAON WAVE CHAIR', tag: '체험가능', desc: '바른 자세와 깊은 휴식을 위한 프리미엄 체어', img: 'assets/wave_chair_nukki.png', scale: 1, href: '#/2/1' },
     ];
     const typeNames = ['대리점 창업', '비고르존 가맹', '제품 구매', '체험 예약'];
     const types = typeNames.map((label, i) => ({ label, go: set({ type: i }), bd: i === S.type ? '#A200FF' : '#dcdcea', bg: i === S.type ? '#A200FF' : '#ffffff', fg: i === S.type ? '#ffffff' : '#292b31' }));
@@ -757,10 +757,12 @@ class Component extends DCLogic {
         const st = (arr) => arr.map((t, i) => ({ n: i + 1, t }));
         let device = '', steps = [];
         if (S.pwaIos) { device = 'iPhone · iPad (Safari)'; steps = st(['화면 아래(아이패드는 위) 공유 버튼 □↑ 을 누르세요.', '목록을 내려 \'홈 화면에 추가\'를 누르세요.', '오른쪽 위 \'추가\'를 누르면 홈 화면에 비고르 아이콘이 생겨요.']); }
+        else if (S.pwaWhale && S.pwaMob) { device = '네이버 웨일 (모바일)'; steps = st(['아래쪽 ≡ 메뉴 버튼을 누르세요.', '\'홈 화면에 추가\'를 누르세요.', '\'추가\'를 누르면 홈 화면에 비고르존 아이콘이 생겨요.']); }
+        else if (S.pwaWhale) { device = '네이버 웨일 (PC)'; steps = st(['오른쪽 위 ≡ 메뉴를 누르세요.', '\'도구 더보기\' → \'바로가기 만들기\'를 누르세요.', '\'창으로 열기\'를 체크하고 \'만들기\'를 누르면 바탕화면에 아이콘이 생겨요.']); }
         else if (S.pwaMob && S.pwaSamsung) { device = '삼성 인터넷'; steps = st(['아래쪽 메뉴 ≡ 버튼을 누르세요.', '\'현재 페이지 추가\' → \'홈 화면\'을 누르세요.', '\'추가\'를 누르면 홈 화면에 아이콘이 생겨요.']); }
         else if (S.pwaMob) { device = 'Android (Chrome)'; steps = st(['오른쪽 위 ⋮ 메뉴를 누르세요.', '\'홈 화면에 추가\' 또는 \'앱 설치\'를 누르세요.', '\'설치\'를 누르면 홈 화면에 아이콘이 생겨요.']); }
         else if (S.pwaSafari) { device = 'Mac (Safari)'; steps = st(['상단 메뉴에서 \'파일\'을 누르세요.', '\'Dock에 추가\'를 누르세요.', '\'추가\'를 누르면 Dock과 Launchpad에 아이콘이 생겨요.']); }
-        else { device = 'PC (Chrome · Edge · 웨일)'; steps = st(['주소창 오른쪽 끝의 설치 아이콘 ⊕ 을 누르세요.', '안 보이면 오른쪽 위 ⋮ 메뉴 → \'저장 및 공유\' → \'페이지를 앱으로 설치\'(Edge는 \'앱\' → \'이 사이트를 앱으로 설치\')를 누르세요.', '\'설치\'를 누르면 바탕화면과 시작 메뉴에 아이콘이 생겨요.']); }
+        else { device = 'PC (Chrome · Edge)'; steps = st(['주소창 오른쪽 끝의 설치 아이콘 ⊕ 을 누르세요.', '안 보이면 오른쪽 위 ⋮ 메뉴 → \'저장 및 공유\' → \'페이지를 앱으로 설치\'(Edge는 \'앱\' → \'이 사이트를 앱으로 설치\')를 누르세요.', '\'설치\'를 누르면 바탕화면과 시작 메뉴에 아이콘이 생겨요.']); }
         return {
           pill: !S.pwaStandalone && !S.pwaDismissed && S.lbS < 0 && !(isMob && S.drawer) && S.scrolled,
           footer: !S.pwaStandalone, guide: !!S.pwaGuide, device, steps,
