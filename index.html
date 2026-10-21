@@ -99,7 +99,8 @@
             </sc-if>
           </div>
         </sc-for>
-        <a href="tel:{{ contact }}" style="margin-top:28px;display:flex;flex-direction:column;gap:4px;padding:20px;border-radius:16px;background:#f5f4fb;color:#161826"><span style="font-size:13px;color:#595d6c">전화 상담</span><span style="font-size:24px;font-weight:700">{{ contact }}</span></a>
+        <a href="{{ kakaoUrl }}" target="_blank" rel="noopener" style="margin-top:28px;display:flex;align-items:center;gap:10px;padding:18px 20px;border-radius:16px;background:#FEE500;color:#191919;font-size:17px;font-weight:700"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#191919" d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.8 5.3 4.6 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.6.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"></path></svg>카카오톡 채팅 상담</a>
+        <a href="tel:{{ contact }}" style="margin-top:10px;display:flex;flex-direction:column;gap:4px;padding:20px;border-radius:16px;background:#f5f4fb;color:#161826"><span style="font-size:13px;color:#595d6c">전화 상담</span><span style="font-size:24px;font-weight:700">{{ contact }}</span></a>
       </div>
     </div>
   </sc-if>
@@ -337,8 +338,17 @@
       <div style="font-size:13px;letter-spacing:.34em;color:#A200FF;font-weight:600">CONTACT</div>
       <h2 style="margin:0;font-size:clamp(26px,3.6vw,52px);font-weight:700;letter-spacing:-.035em;line-height:1.2"><span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.66em;letter-spacing:0;line-height:1.1;color:#A200FF;margin-bottom:.12em">Let's talk</span>당신의 시작을<br><span style="background:linear-gradient(transparent 62%,#ecdcff 62%);padding:0 .06em">함께 그립니다</span></h2>
       <p style="margin:0;font-size:17px;line-height:1.8;color:#595d6c;max-width:420px">남겨주신 연락처로 담당자가 빠르게 안내드립니다.</p>
-      <div style="margin-top:24px;font-size:14px;color:#595d6c">전화 상담</div>
-      <div style="font-size:clamp(32px,3vw,44px);font-weight:700;color:#161826;letter-spacing:-.01em">{{ contact }}</div>
+      <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;max-width:560px">
+        <a href="tel:{{ contact }}" style="display:flex;flex-direction:column;gap:6px;padding:20px 22px;border-radius:18px;background:#f5f4fb;color:#161826" style-hover="background:#ece6fb;color:#161826">
+          <span style="font-size:13px;color:#595d6c">전화 상담</span>
+          <span style="font-size:clamp(22px,2.2vw,28px);font-weight:700;letter-spacing:-.01em;white-space:nowrap">{{ contact }}</span>
+        </a>
+        <a href="{{ kakaoUrl }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px;padding:20px 22px;border-radius:18px;background:#FEE500;color:#191919" style-hover="background:#f5dc00;color:#191919">
+          <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:#3c3a1e"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#191919" d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.8 5.3 4.6 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.6.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"></path></svg>카카오톡 채팅 상담</span>
+          <span style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:clamp(20px,2vw,24px);font-weight:700;letter-spacing:-.01em;white-space:nowrap">채팅 시작하기 <span style="font-size:18px">→</span></span>
+        </a>
+      </div>
+      <div style="font-size:13px;color:#8a8d9b">카카오톡 상담 운영시간 평일 10:00 – 18:00</div>
       <div style="margin-top:32px;display:flex;flex-direction:column">
         <div style="font-size:16px;font-weight:700;padding-bottom:14px;border-bottom:2px solid #161826">자주 묻는 질문</div>
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="3">
@@ -542,6 +552,11 @@
   </div>
 </sc-if>
 
+<a href="{{ kakaoUrl }}" target="_blank" rel="noopener" aria-label="카카오톡 채팅 상담" style="position:fixed;right:clamp(16px,2.4vw,32px);bottom:calc(clamp(16px,2.4vw,32px) + {{ kakaoLift }});z-index:55;width:clamp(48px,5vw,56px);height:clamp(48px,5vw,56px);border-radius:50%;background:#FEE500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;box-shadow:0 10px 28px rgba(25,25,25,.22);transition:bottom .35s ease,transform .2s" style-hover="transform:scale(1.06)">
+  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#191919" d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.8 5.3 4.6 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.6.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"></path></svg>
+  <span style="font-size:9px;font-weight:700;letter-spacing:.02em;line-height:1;color:#191919">상담</span>
+</a>
+
 <button onClick="{{ toTop }}" aria-label="맨 위로 가기" style="position:fixed;right:clamp(16px,2.4vw,32px);bottom:clamp(16px,2.4vw,32px);z-index:55;width:clamp(48px,5vw,56px);height:clamp(48px,5vw,56px);border-radius:50%;border:0;background:#A200FF;color:#ffffff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;box-shadow:0 10px 28px rgba(162,0,255,.35);opacity:{{ topBtn.op }};transform:translateY({{ topBtn.ty }});pointer-events:{{ topBtn.pe }};transition:opacity .35s ease,transform .35s ease,background .2s" style-hover="background:#161826">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
   <span style="font-size:9px;font-weight:700;letter-spacing:.08em;line-height:1">TOP</span>
@@ -570,7 +585,7 @@
 </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;contact&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;010-9131-6179&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;contact&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;010-9131-6179&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;kakaoUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://pf.kakao.com/_ZeUTxl&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
   state = { menuOpen: false, slide: 0, fillOn: false, tab: 0, type: 0, sent: false, faq: -1, route: null, scrolled: false, playing: -1, lbS: -1, lbI: 0, drawer: false, mSec: -1, vw: typeof window !== 'undefined' ? window.innerWidth : 1440 };
   parseHash() { const m = (location.hash || '').match(/^#\/(\d+)\/(\d+)(?:\/(\d+))?/); return m ? { m: +m[1], s: +m[2], k: m[3] != null ? +m[3] : null } : null; }
@@ -727,6 +742,8 @@ class Component extends DCLogic {
     const faqs = faqRaw.map((f, i) => ({ ...f, open: S.faq === i, icon: S.faq === i ? '−' : '+', toggle: () => this.setState(s => ({ faq: s.faq === i ? -1 : i })) }));
     return {
       contact: this.props.contact ?? '010-9131-6179',
+      kakaoUrl: this.props.kakaoUrl || 'https://pf.kakao.com/_ZeUTxl',
+      kakaoLift: S.showTop && S.lbS < 0 ? 'clamp(60px,6vw,68px)' : '0px',
       showPhone: S.vw >= 1280, navJustify: S.vw >= 1100 ? 'center' : 'flex-start',
       videos: [
         { kicker: 'ORAON FILM', title: '오라온 홍보영상', src: 'video/oraon_promo.mp4', gain: 2.8 },
